@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - stable
+services:
+  - postgresql
+cache:
+  directories:
+    - node_modules
+before_install:
+  - psql -c "CREATE ROLE cv_builder WITH SUPERUSER LOGIN PASSWORD 'postgres';" -U postgres
+  - npm install -g sequelize-cli
+before_script:
+  - npm install codeclimate-test-reporter -g
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - "./cc-test-reporter before-build"
+script:
+  - npm test
+after_script:
+  - npm run coverage
