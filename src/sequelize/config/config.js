@@ -2,25 +2,25 @@ require("dotenv").config();
 
 module.exports = {
   development: {
-    use_env_variable: "DATABASE_URL_DEV",
+    use_env_variable: "DATABASE_DEV_URL",
     dialect: "postgres",
     define: {
-      timestamps: false
+      timestamps: true
     }
   },
   test: {
-    use_env_variable: "DATABASE_URL_TEST",
+    use_env_variable: "DATABASE_TEST_URL",
     dialect: "postgres",
     define: {
-      timestamps: false
+      timestamps: true
     },
     logging: false
   },
   production: {
-    use_env_variable: "DATABASE_URL",
+    use_env_variable: "DATABASE_PROD_URL",
     dialect: "postgres",
     define: {
-      timestamps: false
+      timestamps: true
     },
     logging: false
   }
