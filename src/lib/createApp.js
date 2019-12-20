@@ -6,6 +6,9 @@ import swaggerUi from "swagger-ui-express";
 
 import { logger } from "loggery";
 
+// Routes
+import routes from "../routes";
+
 async function createApp() {
   try {
     const app = new Express();
@@ -21,7 +24,7 @@ async function createApp() {
     /**
      * Setup the documentation url.
      */
-    app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     /**
      * Enable CORS
@@ -31,7 +34,7 @@ async function createApp() {
      * Register the routes
      */
 
-    // app.use('/v1', routes);
+    app.use("/v1", routes);
 
     // app.use('*', error404);
 

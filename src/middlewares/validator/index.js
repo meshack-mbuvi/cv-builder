@@ -1,0 +1,1 @@
+export { joiValidate } from "./joiValidator";

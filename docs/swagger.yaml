@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: cv-builder API developed by Meshack Mbuvi for fun
+  summary: API endpoints for CV_BUILDER API
+  description: Please select the serve below depending on whether you are using Heroku or running the application locally
+
+version: 0.1.9
+
+servers:
+  - url: http://localhost:3000/api
+
+components:
+  securitySchemes:
+    USER-KEY:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+        firstName:
+          type: string
+          example: Lannucci
+        lastName:
+          type: string
+          example: Lannucci
+        password:
+          type: string
+          example: test
+        confirmPassword:
+          type: string
+          example: test
+        email:
+          type: string
+          example: test@gmail.com
+paths:
+  /users/signup:
+    post:
+      summary: create new user account
+      description: creates a new account for the user
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  example: Lannucci
+                lastName:
+                  type: string
+                  example: Lannucci
+                password:
+                  type: string
+                  example: test
+                confirmPassword:
+                  type: string
+                  example: test
+                email:
+                  type: string
+                  example: test@gmail.com
+
+      responses:
+        201:
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rows:
+                    $ref: "#components/schemas/User"

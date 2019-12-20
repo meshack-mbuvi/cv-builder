@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/meshack-mbuvi/cv-builder.svg?branch=develop)](https://travis-ci.com/meshack-mbuvi/cv-builder)
 [![Coverage Status](https://coveralls.io/repos/github/meshack-mbuvi/cv-builder/badge.svg?branch=develop)](https://coveralls.io/github/meshack-mbuvi/cv-builder?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/meshack-mbuvi/cv-builder/badge.svg)](https://coveralls.io/github/meshack-mbuvi/cv-builder)
 
 # Overview
 
