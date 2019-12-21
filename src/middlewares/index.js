@@ -1,2 +1,2 @@
-export { signupRequestSchema } from "./schemas";
-export { joiValidate } from "./validator";
+export { signupRequestSchema, loginRequestSchema } from './schemas';
+export { joiValidate } from './validator';

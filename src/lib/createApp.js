@@ -1,18 +1,18 @@
-import Express from "express";
-import YAML from "yamljs";
-import bodyParser from "body-parser";
-import cors from "cors";
-import swaggerUi from "swagger-ui-express";
+import Express from 'express';
+import YAML from 'yamljs';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 
-import { logger } from "loggery";
+import { logger } from 'loggery';
 
 // Routes
-import routes from "../routes";
+import routes from '../routes';
 
 async function createApp() {
   try {
     const app = new Express();
-    const swaggerDocument = YAML.load("docs/swagger.yaml");
+    const swaggerDocument = YAML.load('docs/swagger.yaml');
 
     /**
      * Register essential middleware
@@ -24,7 +24,7 @@ async function createApp() {
     /**
      * Setup the documentation url.
      */
-    app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     /**
      * Enable CORS
@@ -34,7 +34,7 @@ async function createApp() {
      * Register the routes
      */
 
-    app.use("/v1", routes);
+    app.use('/v1', routes);
 
     // app.use('*', error404);
 
