@@ -31,9 +31,6 @@ components:
         password:
           type: string
           example: test
-        confirmPassword:
-          type: string
-          example: test
         email:
           type: string
           example: test@gmail.com
@@ -60,9 +57,6 @@ paths:
                 password:
                   type: string
                   example: test
-                confirmPassword:
-                  type: string
-                  example: test
                 email:
                   type: string
                   example: test@gmail.com
@@ -76,4 +70,55 @@ paths:
                 type: object
                 properties:
                   rows:
-                    $ref: "#components/schemas/User"
+                    $ref: '#components/schemas/User'
+  /users/login:
+    post:
+      summary: Login a user
+      description: Endpoint for user login
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: test
+                email:
+                  type: string
+                  example: test@gmail.com
+
+      responses:
+        200:
+          description: User logged in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      firstName:
+                        type: string
+                        example: Lannucci
+                      lastName:
+                        type: string
+                        example: Lannucci
+                      email:
+                        type: string
+                        example: test@example.com
+                      accountType:
+                        type: string
+                        example: normal
+                      createdAt:
+                        type: string
+                      updatedAt:
+                        type: string
+                  accessToken:
+                    type: string
+                  expires_in:
+                    type: string

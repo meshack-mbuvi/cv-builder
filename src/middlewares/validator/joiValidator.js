@@ -1,4 +1,4 @@
-import Joi from "@hapi/joi";
+import Joi from '@hapi/joi';
 
 export function joiValidate(source, schema) {
   return (req, res, next) => {
@@ -11,7 +11,7 @@ export function joiValidate(source, schema) {
         data.push({ [label]: message });
       });
       return res.status(400).json({
-        data
+        data,
       });
     }
     return next();

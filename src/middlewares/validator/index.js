@@ -1,1 +1,1 @@
-export { joiValidate } from "./joiValidator";
+export { joiValidate } from './joiValidator';
