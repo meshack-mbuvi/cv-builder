@@ -7,11 +7,11 @@ info:
 version: 0.1.9
 
 servers:
-  - url: http://localhost:3000/api
+  - url: http://localhost:3000/v1
 
 components:
   securitySchemes:
-    USER-KEY:
+    user-key:
       type: http
       scheme: bearer
       bearerFormat: JWT
@@ -34,6 +34,22 @@ components:
         email:
           type: string
           example: test@gmail.com
+    Employment:
+      type: object
+      properties:
+        title:
+          type: string
+          example: test
+        employer:
+          type: string
+        city:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        description:
+          type: string
 paths:
   /users/signup:
     post:
@@ -70,7 +86,7 @@ paths:
                 type: object
                 properties:
                   rows:
-                    $ref: '#components/schemas/User'
+                    $ref: "#components/schemas/User"
   /users/login:
     post:
       summary: Login a user
@@ -121,4 +137,45 @@ paths:
                   accessToken:
                     type: string
                   expires_in:
+                    type: string
+  /employments/new:
+    post:
+      summary: Create new employment history
+      tags:
+        - Employment
+      security:
+        - {}
+        - user-key: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: test
+                employer:
+                  type: string
+                city:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                description:
+                  type: string
+
+      responses:
+        201:
+          description: New employment history created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  $ref: "#components/schemas/Employment"
+                  message:
                     type: string

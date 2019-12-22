@@ -6,7 +6,7 @@ import request from 'supertest';
 
 const { expect } = chai;
 
-describe('Create user', () => {
+describe('User account', () => {
   let server;
   beforeEach(async () => {
     const app = await createApp();

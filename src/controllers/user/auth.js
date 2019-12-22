@@ -19,11 +19,11 @@ export class UserController {
 
   /**
    * @summary - This method creates a new user account
-   * @param {object}request - a request object with data for a new user
-   * @param {object}response -  a response object used to send back to the user the
+   * @param {object} request - a request object with data for a new user
+   * @param {object} response -  a response object used to send back to the user the
    *  results from the operation of creating new account
    *
-   * @returns request
+   * @returns {*} response
    */
   static async signUp(request, response) {
     const {
@@ -67,6 +67,14 @@ export class UserController {
     }
   }
 
+  /**
+   * This method handles user login functionality
+   *
+   * @param {*} request
+   * @param {*} response
+   *
+   * @returns {*} response
+   */
   static async login(request, response) {
     const {
       body: { email, password },
@@ -89,8 +97,9 @@ export class UserController {
         const accessToken =
           'Bearer ' +
           (await jwt.sign(
-            { customer_id: user.dataValues.id },
+            { user_id: user.dataValues.id },
             process.env.SECRET_KEY,
+            { expiresIn: '24h' },
           ));
 
         // user password hash not to be included in the response
