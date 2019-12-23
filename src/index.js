@@ -8,7 +8,8 @@ async function main() {
     const app = await createApp();
 
     await app.listen(PORT, async () => {
-      logger().info(`Cv-builder api listening on port: http://localhost:${PORT}`);
+      logger()
+        .info(`Cv-builder api listening on port: http://localhost:${PORT}`);
     });
 
     return app;

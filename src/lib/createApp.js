@@ -6,7 +6,6 @@ import swaggerUi from 'swagger-ui-express';
 
 import { logger } from 'loggery';
 
-// Routes
 import routes from '../routes';
 
 async function createApp() {
@@ -33,10 +32,7 @@ async function createApp() {
     /**
      * Register the routes
      */
-
     app.use('/v1', routes);
-
-    // app.use('*', error404);
 
     return app;
   } catch (error) {
